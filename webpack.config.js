@@ -19,10 +19,10 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    loader: "ts-loader",
+                    loader: 'ts-loader',
                     options: {
-                        transpileOnly: true
-                    }
+                        transpileOnly: true,
+                    },
                 },
             },
             {
@@ -48,7 +48,7 @@ module.exports = {
                     options: {
                         name: nodeEnv ? 'assets/[name].[ext]' : 'assets/[hash].[ext]',
                     },
-                }, ],
+                }],
             },
         ],
     },
@@ -58,6 +58,7 @@ module.exports = {
     plugins: [
         new HtmlWebPackPlugin({
             template: './src/index.html',
+            favicon: './src/assets/favicon.ico',
             filename: './index.html',
         }),
         new MiniCssExtraxtPlugin({

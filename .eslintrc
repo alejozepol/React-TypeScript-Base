@@ -28,7 +28,7 @@
       "array-bracket-spacing": 2,
       "arrow-body-style": 0,
       "block-scoped-var": 2,
-      "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+      "brace-style": [4, "1tbs", { "allowSingleLine": true }],
       "comma-spacing": [2, { "before": false, "after": true }],
       "comma-style": [2, "last"],
       "complexity": 0,
