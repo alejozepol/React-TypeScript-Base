@@ -60,8 +60,21 @@
   color: $colorDark-var2;
 }
 
+input::placeholder {
+  text-align: center;
+  color: $colorDesactive;
+  font-style: italic;
+  font-weight: 100;
+}
+
 .InputFile {
   width: 100%;
+  &::placeholder {
+    text-align: center;
+    color: $colorDesactive;
+    font-style: italic;
+    font-weight: 100;
+  }
   &__file {
     display: none;
   }

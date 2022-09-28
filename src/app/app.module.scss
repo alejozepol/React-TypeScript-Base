@@ -1,10 +1,18 @@
+@import "./styles/index";
+
 body {
   margin: 0;
 }
 
-h1 {
-  margin: 0;
+
+h1, p {
+  color: $colorLight;
+  font-style: italic;
+  text-align: justify;
+  padding: 0 5px;
+  @include FontTertiary
 }
+
 .page {
   margin: 0;
   height: 100vh;
@@ -26,8 +34,8 @@ h1 {
   grid-template-areas:
     "title title"
     "par1 par1"
-    "par2 par2"
     "formFile formSheet";
+    align-items: center;
 }
 .title {
   grid-area: title;
@@ -62,5 +70,35 @@ h1 {
   }
   & > button {
     grid-area: button;
+  }
+}
+.resultPage{
+  margin: 0;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include styleScrollY;
+}
+h3 {
+
+}
+h4 {
+  padding-left: 10px;
+}
+h6 {
+  padding-left: 20px;
+}
+
+.org {
+  margin-top: 20px;
+  align-self: flex-start;
+  margin-left: 40px;
+  & > h1 {
+  }
+  & div {
+    margin: 10px 0;
   }
 }

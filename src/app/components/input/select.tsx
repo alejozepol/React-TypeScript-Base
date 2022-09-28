@@ -7,6 +7,7 @@ export interface OptionsSelectFormInterface {
   selected?: boolean;
   disabled?: boolean;
   view?: boolean;
+  orden?: boolean;
 }
 
 /* eslint-disable-next-line */

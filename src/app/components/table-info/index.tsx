@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import FiltersCamp, { ResultFilterInterface } from "../filters-camp";
 import { OptionsSelectFormInterface } from "../input";
+import OrderCamp from "../order-camp";
 import SelectCamp from "../select-camp";
 import { exportTabletoExcel } from "../utils";
 
@@ -15,10 +16,12 @@ import "./table-info.scss";
 /* eslint-disable-next-line */
 export interface TableInfoProps {
   // eslint-disable-next-line @typescript-eslint/ban-types
-  data: [];
+  data: {}[];
+  setData: React.Dispatch<React.SetStateAction<{}[]>>;
   title: string;
   fieldsTable: OptionsSelectFormInterface[];
   filterView: boolean;
+  orderFields: boolean;
   selectFieldsView: boolean;
   setFieldsTable: Dispatch<SetStateAction<OptionsSelectFormInterface[]>>;
   newRegisterView: boolean;
@@ -47,11 +50,13 @@ export function TableInfo({
   newRegisterOnClick,
   onClicDelete,
   onClicEdit,
-  onClicVisibility
+  onClicVisibility,
+  orderFields,
 }: TableInfoProps) {
   const [dataState, setData] = useState([]);
   const [conditions, setConditions] = useState<ResultFilterInterface[]>([]);
-
+  const [ordens, setOrdens] = useState<ResultFilterInterface[]>([]);
+  console.log(data);
   useEffect(() => setData(data), [data]);
 
   useEffect(() => {
@@ -80,6 +85,7 @@ export function TableInfo({
         }
         return false;
       });
+
       setData([...result]);
     } else {
       setData([...data]);
@@ -87,8 +93,27 @@ export function TableInfo({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conditions]);
 
+  useEffect(() => {
+    const activeOrder = fieldsTable.find((item) => item.orden === true);
+    if (activeOrder) {
+      function compare_lname(a: { [x: string]: { toLowerCase: () => number; }; }, b: { [x: string]: { toLowerCase: () => number; }; }) {
+        if (a[activeOrder?.name || ''].toLowerCase() < b[activeOrder?.name || ''].toLowerCase()) {
+          return -1;
+        }
+        if (a[activeOrder?.name || ''].toLowerCase() > b[activeOrder?.name || ''].toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      }
+      const result = dataState.sort(compare_lname)
+      setData([...result]);
+    } else {
+      setData([...data]);
+    }
+  }, [fieldsTable]);
+
   const handleDownload = () => {
-    exportTabletoExcel(data as [], "Descarga ICE", downloadsheet);
+    exportTabletoExcel(dataState as [], "Descarga ICE", "a", false);
   };
   return (
     <section className="TableInfo">
@@ -107,6 +132,13 @@ export function TableInfo({
             fields={fieldsTable}
             setFields={setFieldsTable}
             styleContent="TableInfo__actions-select"
+          />
+        )}
+        {orderFields && (
+          <OrderCamp
+            fields={fieldsTable}
+            setFields={setFieldsTable}
+            styleContent="TableInfo__actions-filter"
           />
         )}
         {downloadView && (
@@ -143,7 +175,7 @@ export function TableInfo({
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
+              {dataState.map((item, index) => (
                 <tr className="TableInfo__row" key={index}>
                   <td className="TableInfo__firt">{index + 1}</td>
                   {Object.values(item).map(
@@ -179,7 +211,7 @@ export function TableInfo({
               <tr className="TableInfo__footer">
                 {/* //TODO scroll infinito */}
                 <td></td>
-                {data.length > 0 &&
+                {dataState.length > 0 &&
                   Object.keys(dataState[0]).map((key, index) => (
                     <td key={index}></td>
                   ))}

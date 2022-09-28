@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { OptionsSelectFormInterface } from '../input';
 
 import './filters-camp.scss';
@@ -35,8 +35,11 @@ export function FiltersCamp(props: FiltersCampProps) {
     setValues({
       ...form,
       [event.target.name]: event.target.value,
-    });
+    })
   };
+  useEffect(() => {
+    console.log(form, 'x')
+}, [form])
 
   const viewFilters = () => (view ? setView(false) : setView(true));
 

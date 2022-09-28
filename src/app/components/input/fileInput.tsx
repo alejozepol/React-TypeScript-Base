@@ -34,7 +34,8 @@ export function InputFile(props: InputFileProps) {
 
   const handleInputFile = (event) => {
     if (event.target.files.length) {
-      props.handleFile(event.target.files[0]);
+      console.log('dd', event.target.files[0])
+      props.handleFile(event);
       setPath(event.target.files[0].name);
     }
   };
@@ -46,6 +47,7 @@ export function InputFile(props: InputFileProps) {
         ref={refInput}
         type="file"
         onChange={handleInputFile}
+        required
       />
       <span className={style.InputFile__label}>seleccionar documento</span>
       <div className={style.InputFile__container}>
@@ -57,6 +59,7 @@ export function InputFile(props: InputFileProps) {
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           value={path}
+          required
           disabled
         />
         <button

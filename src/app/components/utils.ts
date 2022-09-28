@@ -15,16 +15,13 @@ export const exportTabletoExcel = (data: [],
   }
   book.Props = {
     Title: filename,
-    Author: 'APPICE',
-    Company: 'CocaCola - FEMSA'
+    Author: 'Alejandro Lopez',
+    Company: 'Prueba Tecnica'
   }
   book.SheetNames.push(sheet);
   book.Sheets[sheet] = dataToFile
-  return XLSX.writeFile(book, `${filename}.xlsx`, {
-    bookType: 'xlsx',
-    bookSST: true,
-    type: 'binary',
-  })
+  console.log(book)
+  return XLSX.writeFile(book, `${filename}.xlsx`)
 
 }
 

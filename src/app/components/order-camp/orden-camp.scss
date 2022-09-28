@@ -1,0 +1,40 @@
+@import "../../styles/index";
+
+.OrdenCamp {
+  position: relative;
+  width: min-content;
+  &__icon {
+    &.active {
+      color: $colorPrimary-var2;
+    }
+  }
+  &__content {
+    background-color: fade-out($colorPrimary, 0.9);
+    width: 150px;
+    height: max-content;
+    width: max-content;
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-areas: "filter" "actives";
+    grid-template-rows: 30px auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    &-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: fade-out($colorDark, 0.2);
+      color: $colorLight;
+      border-radius: 5px;
+      margin: 5px 0;
+      padding: 0 5px 0 0;
+      & > input[type="checkbox"] {
+        outline-offset: none;
+        // TODO color checkbox input
+      }
+    }
+  }
+}
