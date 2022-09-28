@@ -1,0 +1,67 @@
+@import "../../styles/index";
+
+.Button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .6rem 1.5rem !important;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: .40rem;
+  letter-spacing: .25px !important;
+  -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+  width: -webkit-fill-available;
+  min-width: 200px;
+  max-width: 400px;
+  display: grid;
+  grid-template-areas: "text icon";
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: small;
+  &__text {
+    grid-area: text;
+    font-weight: 800;
+    font-style: italic;
+    margin: 0%;
+    font-size: x-large;
+  }
+  &__icon {
+    padding-left: 4px;
+    grid-area: icon;
+  }
+  &:hover {
+    border: 1px solid $colorDark;
+    -webkit-box-shadow: -5px 4px 27px -8px $colorDark;
+    -moz-box-shadow: -5px 4px 27px -8px $colorDark;
+    box-shadow: -5px 4px 27px -8px $colorDark;
+  }
+  &:active {
+    transition: background 0s;
+    transform: scale(0.9);
+    outline-style: none;
+  }
+}
+
+.primary {
+  border: 1px solid $colorPrimary-var2;
+  color: fade-out($colorLight, 0);
+  @include BgPrimaryGradient;
+  &:hover {
+    background: linear-gradient(bottom top, 0%, $colorPrimary-var2 100%);
+  }
+  &:active {
+    background: $colorPrimary;
+  }
+}
+
+button{
+  padding: 0%;
+}

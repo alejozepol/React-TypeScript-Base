@@ -34,12 +34,7 @@ module.exports = {
             {
                 test: /\.(s*)css$/,
                 exclude: /node_modules/,
-                use: [{
-                        loader: MiniCssExtraxtPlugin.loader,
-                    },
-                    'css-loader',
-                    'sass-loader',
-                ],
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(png|gif|jpg|svg|ico)$/,

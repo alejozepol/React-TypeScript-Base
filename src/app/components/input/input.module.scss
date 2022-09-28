@@ -1,0 +1,236 @@
+@import "../../styles/index";
+
+.Input {
+  width: 100%;
+  margin: 5px 0;
+  display: grid;
+  grid-template-areas: "label" "input";
+  align-items: center;
+  text-align: center;
+  &__label {
+    grid-area: label;
+    margin: 2px;
+  }
+  &__input {
+    outline-style: none;
+    grid-area: input;
+    padding: 5px 1px;
+    margin: 5px 0;
+    background-color: fade-out($colorLight-var1, 0);
+    border-radius: 30px;
+    font-size: large;
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
+    color: $colorDark;
+    border: 1px solid $colorPrimary-shadow;
+    &::placeholder {
+      text-align: center;
+      color: $colorDesactive;
+      font-style: italic;
+      font-weight: 100;
+    }
+    &:active {
+      border: 1px solid $colorPrimary-var1;
+      ~ .Input__label {
+        color: $colorDark;
+      }
+    }
+    &:focus {
+      border: 2px solid $colorPrimary-var2;
+      -webkit-box-shadow: -5px 4px 27px -8px $colorPrimary-var1;
+      -moz-box-shadow: -5px 4px 27px -8px $colorPrimary-var1;
+      box-shadow: -5px 4px 27px -8px $colorPrimary-var1;
+      ~ .Input__label {
+        color: $colorPrimary-var2;
+      }
+    }
+    &[type="checkbox"] {
+      background: red;
+    }
+  }
+}
+
+.inputFocus {
+  &::placeholder {
+    color: fade-out($colorDark, 0.5);
+  }
+}
+.labelfull {
+  color: $colorDark-var2;
+}
+
+.InputFile {
+  width: 100%;
+  &__file {
+    display: none;
+  }
+  &__container {
+    display: grid;
+    grid-template-areas: "input btn";
+    grid-template-rows: 100%;
+    grid-template-columns: 70% 30%;
+    justify-content: center;
+    align-items: center;
+    &_input {
+      grid-area: input;
+      border-top-right-radius: 0%;
+      border-bottom-right-radius: 0%;
+    }
+    &_btn {
+      grid-area: btn;
+      height: 80%;
+      padding: 5px 1px;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      background-color: $colorPrimary;
+      border: none;
+      color: $colorDark;
+    }
+  }
+}
+
+.TagInput {
+  width: 98%;
+  outline-style: none;
+  background: $colorLight-var1;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  margin: 5px 0;
+  margin-top: 28px;
+  border-radius: 30px;
+  font-size: large;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
+  color: $colorDark;
+  border: 1px solid $colorPrimary-shadow;
+  position: relative;
+  &__label {
+    bottom: 100%;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+  }
+  &__tags {
+    margin-left: 5px;
+    display: grid;
+    grid-auto-flow: dense;
+    grid-auto-columns: min-content;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 5px;
+    column-gap: 5px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    &_item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 9px;
+      align-items: center;
+      background: $colorPrimary;
+      color: $colorLight;
+      border-radius: 30px;
+      font-weight: 300;
+      list-style: none;
+      width: 81%;
+      & button {
+        align-items: center;
+        appearance: none;
+        background: $colorDark;
+        border: none;
+        border-radius: 50%;
+        color: $colorLight;
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 12px;
+        height: 15px;
+        justify-content: center;
+        line-height: 0;
+        margin-left: 8px;
+        padding: 0;
+        transform: rotate(45deg);
+        width: 15px;
+      }
+    }
+    & input {
+      border: none;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      outline-style: none;
+      font-weight: 300;
+      border-radius: 30px;
+    }
+    &_input {
+      width: 81%;
+      background: $colorLight;
+      border: 1px solid $colorPrimary;
+      padding: 0 4px;
+      border-radius: 30px;
+      font-weight: 300;
+      list-style: none;
+      width: 81%;
+    }
+    &__btn {
+      color: #6acc50;
+      background-color: transparent;
+      border: none;
+      font-size: xx-large !important;
+      justify-self: start;
+    }
+  }
+  &__suggestions {
+    margin: 0;
+    width: 98%;
+    height: max-content;
+    max-height: 230px;
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    list-style: none;
+    background-color: $colorLight-var1;
+    border: 1px solid $colorPrimary;
+    color: $colorDark;
+    font-weight: bold;
+    padding: 0;
+    border-radius: 0 0 30px 30px;
+    @include styleScrollY;
+    & > li {
+      border-bottom: 1px solid fade-out($colorPrimary, 0.6);
+      padding: 2px 0;
+      &:hover {
+        background-color: $colorPrimary;
+        color: $colorLight;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .TagInput {
+    &__tags {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .TagInput {
+    &__tags {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .TagInput {
+    &__tags {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

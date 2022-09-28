@@ -1,0 +1,82 @@
+@import "../../styles/index";
+
+.FiltersCamp {
+  position: relative;
+  width: min-content;
+  &__icon{
+    &.active{
+      color: $colorPrimary-var2;
+    }
+  }
+  &__content {
+    height: max-content;
+    width: max-content;
+    position: absolute;
+    right: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-areas: "filter" "actives";
+    grid-template-rows: 30px auto;
+    justify-content: center;
+    align-items: center;
+    &_filter {
+      grid-area: filter;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px outset $colorDesactive;
+      background-color: $colorDark;
+      border-radius: 5px;
+      margin: 5px 0;
+    }
+    &_actives {
+      grid-area: actives;
+      color: $colorLight;
+      &-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem !important;
+        background-color: fade-out($colorDark, 0.2);
+        border-radius: 5px;
+        margin: 5px 0;
+        & > div {
+          width: 100px;
+          text-align: center;
+          margin: 0 5px;
+        }
+      }
+    }
+    &-select {
+      width: 100px;
+      outline-style: none;
+      grid-area: input;
+      padding: 0;
+      margin: 0 5px;
+      background-color: fade-out($colorDark, 0.5);
+      border-radius: 3px;
+      text-align: center;
+      text-align-last: center;
+      -moz-text-align-last: center;
+      color: $colorLight;
+      border: 1px solid $colorPrimary;
+      font-size: large;
+    }
+    &-btn {
+      background-color: transparent;
+      border: 0;
+      outline-style: none;
+      &:active {
+        transition: background 0s;
+        transform: scale(0.9);
+        outline-style: none;
+      }
+      &--add {
+        color: #77ee67;
+      }
+      &--delete {
+        color: $colorPrimary;
+      }
+    }
+  }
+}

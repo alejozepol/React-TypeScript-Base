@@ -1,0 +1,145 @@
+@import "../../styles/index";
+
+.TableInfo {
+  width: 100%;
+  max-width: 90vw;
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+  }
+  &__title{
+  }
+  &__tablaContainer {
+    display: block;
+    @include styleScrollX;
+  }
+  &__tabla {
+    width: 100%;
+    background-color: $colorLight;
+    border-collapse: collapse;
+    margin: 0;
+    border-radius: 5px;
+    empty-cells: show;
+    @include ShadowLight($colorShadow);
+    & td,
+    th {
+      width: 120px;
+      border-collapse: collapse;
+/*       flex-basis:100%; */
+      flex-grow:2;
+      padding: 1rem;
+      text-align:left;
+      height: max-content;
+      margin: auto;
+      text-transform: uppercase;
+
+    }
+    & tr{
+      width: 100%;
+      display:flex;
+      height: max-content;
+    }
+    & > thead {
+      background-color: $colorPrimary;
+      color: $colorLight;
+      width:100%;
+      margin: auto;
+      & th {
+        text-align: center;
+        line-height: 1.4;
+        text-transform: uppercase;
+        vertical-align: middle;
+        padding: 0 5px;
+        margin: auto;
+      }
+    }
+    & td {
+      font-size: small !important;
+      padding: 0 3px;
+      text-align: center;
+    }
+    & > tbody {
+      width: 100%;
+      max-height: 70vh;
+      display: block;
+      @include styleScrollY;
+    }
+  }
+  &__firt{
+    width: 10px !important;
+    text-align: center;
+  }
+  &__row {
+    border-bottom: 1px solid $colorDark;
+    &:hover {
+      background-color: fade-out($colorPrimary, 0.9);
+    }
+    &-action {
+      width: 80px !important;
+      text-align: center;
+      border-collapse: collapse;
+      & > button {
+        background-color: transparent;
+      }
+      &--view {
+        color: $colorContrast-var1;
+        &:hover {
+          color: $colorContrast-var2;
+          transform: translate(0, -1px);
+        }
+      }
+      &--edit {
+        color: #099ff6;
+        &:hover {
+          color: #0071b3;
+          transform: translate(0, -1px);
+        }
+      }
+      &--delete {
+        color: $colorPrimary-var1;
+        &:hover {
+          color: $colorPrimary-var2;
+          transform: translate(0, -1px);
+        }
+      }
+    }
+  }
+  &__footer {
+    height: 16px;
+    width: 100%;
+    background-color:#099ff6;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .TableInfo {
+    &__tabla{
+      display: table;
+    }
+    &__actions {
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      z-index: 1024;
+      & .btn-circle {
+        background-color: $colorContrast;
+        color: $colorDark;
+        margin: 1px;
+        @include Shadow($colorShadow);
+      }
+      & > .FiltersCamp {
+        position: initial;
+      }
+      &-filter,
+      &-select {
+        bottom: 100%;
+      }
+    }
+    &__tablaContainer {
+      margin: 5% 0;
+    }
+  }
+}
+

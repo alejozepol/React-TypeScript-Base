@@ -1,0 +1,27 @@
+$colorPrimary: #f40000;
+$colorPrimary-var1: #e40300;
+$colorPrimary-var2: #ff0100;
+$colorPrimary-shadow: #f4000059;
+$colorDark: #000000;
+$colorDark-var1: #333333;
+$colorDark-var2: #020202;
+$colorShadow: #33333359;
+$colorLight: #ffffff;
+$colorLight-var1: #fafafa;
+$colorLight-var2: #eeeded;
+$colorDesactive: #b3b1b1;
+$colorContrast: #74aa50;
+$colorContrast-var1: #8fcc67;
+$colorContrast-var2: #5d8f3c;
+$colorContrast-shadow: #5d8f3c36;
+$colorFontDark: #212529;
+$colorFontLight: #ffffff;
+
+
+@mixin BgPrimaryGradient {
+  background: linear-gradient(to bottom, $colorPrimary-var1 0%, $colorPrimary-var2 100%);
+}
+
+@mixin BgDarkGradient {
+  background: linear-gradient(to bottom, $colorDark-var1 0%, $colorDark-var2 100%);
+}
